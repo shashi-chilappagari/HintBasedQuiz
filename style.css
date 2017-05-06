@@ -1,5 +1,5 @@
 body{
-	background-coclor: #eeeeee;
+	background-color: #eeeeee;
 	font-family:'Lato', sans-serif;
 }
 
@@ -7,40 +7,106 @@ body{
 	width: 600px;
 	height: 500px;
 	margin: 0 auto;
-	background-color: #fff;
+	background-color: #20272b;
 	padding: 10px 50px 50px 50px;
 	border-radius: 50px;
 	border: 2px solid #cbcbcb;
 	box-shadow:1-px 15px 5px #cbcbcb;
 }
-
+#result{
+	color:#ddd;
+}
+#option1Box{
+	width: 120px;
+	height: 120px;
+	margin: 0 0 0 0;
+	background-color:#fff;
+	padding: 10px 10px 10px 10px;
+	border-radius: 0px;
+}
+#title h2{
+	color:#fff;
+}
+#feedbackBox{
+		margin: 0 0 0 0;
+		background-color:green;
+		padding: 10px 10px 10px 10px;
+		border-radius: 0px;
+	}
+#feedback{
+			margin: 2px 2px 2px 2px;
+			background-color:lightgreen;
+			padding: 10px 10px 10px 10px;
+			border-radius: 10px;
+			border: 2px;
+}
+#optionBtn1,#optionBtn2,#optionBtn3,#optionBtn4{
+	margin: 2px 2px 2px 2px;
+	background-color:black;
+	padding: 5px 5px 5px 5px;
+	border-radius: 10px;
+	border: 2px solid black;
+}
+#optionBtn1:focus,#optionBtn2:focus,#optionBtn3:focus,#optionBtn4:focus{
+	outline:0;
+}
+#Hint1, #Hint2, #Hint3, #Hint4 {
+			margin: 2px 2px 2px 2px;
+			background-color:skyblue;
+			padding: 10px 10px 10px 10px;
+			border-radius: 10px;
+			border: 2px;
+			}
 .option{
 	width: 100px;
 	height: 40px;
-
+	color:aquamarine;
 }
-
+#img1, #img2, #img3, #img4{
+	width:120px;
+	height:120px;
+}
 input{
-	margin-bottom: 20px;
+	margin-bottom: 0px;
+	margin-left:0px;
 }
-
 .container #question{
 	font-family: sans-serif;
-	font-size: 30px;
-	coclor: #5a6772;
-	margin: 10px 40px 10px 0px;
+	font-size: 20px;
+	margin: 2px 2px 20px 2px;
+	color:#000;
+	background-color:lightblue;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 0px solid white;
 }
-.hint-btn{
-	margin-bottom: 20px;
+.hint-btn, .submit-btn,.next-btn{
+	margin: 2px 2px 2px 2px;
+	background-color:blanchedalmond;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 2px;
+}
+.hint-btn:hover{
+	background-color:burlywood;
 }
 .submit-btn{
-	margin-bottom: 20px;
+	background-color:tomato;
+}
+.submit-btn:hover{
+	background-color:indianred;
 }
 .next-btn{
-	margin-bottom: 20px;
+	background-color:sienna;
+}
+.next-btn:hover{
+	background-color:saddlebrown;
 }
 .buttons{
 	margin-top: 30px;
+}
+.hint-btn:focus, .submit-btn:focus,.next-btn:focus{
+	outline: 0;
 }
 
 #btn0, #btn1, #btn2, #btn3{
@@ -65,4 +131,11 @@ input{
 }
 #btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus{
 	outline: 0;
+}
+
+table, tr, td{
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 0 10px 0;
+
 }

@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+<head>
+	<title>Shashi's Interactive Quiz</title>
+	<link href="style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+	<div id="quizContainer" class="container">
+		<div id="title" align="center"><h2>The Audio Orbis Quiz</h1></div>
 
-		<title>Shashi's Interactive Quiz</title>
-		<link href="style.css" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	</head>
-	<body>
-		<div id="quizContainer" class="container">
-			<div class="title">Capital Quiz</div>
+		<div id="question" class="question"></div>
 
-			<div id="question" class="question"></div>
-
-			<label class="option"><input type="radio" name="option" value="1" /><span id="Option1"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="2" /><span id="Option2"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="4" /><span id="Option4"></span></label><br>
-			<label class="option"><input type="radio" name="option" value="3" /><span id="Option3"></span></label><br>
-
-			<label class="hints"><p id="Hint1" style="display:none;"></p></label>
-			<label class="hints"><p id="Hint2" style="display:none;"></p></label>
-			<label class="hints"><p id="Hint3" style="display:none;"></p></label>
-			<label class="hints"><p id="Hint4" style="display:none;"></p></label>
-
-			<p id="feedback" style="display:none;"></p>
-
-			<button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button><br>
-
-			<button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button><br>
-
-			<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button><br>
+		<table style="width:100%">
+			<tr>
+				<td><img id="img1" ></td>
+				<td><img id="img2" ></td>
+				<td><img id="img3" ></td>
+				<td><img id="img4" ></td>
+			</tr>
+			<tr>
+				<td><input type="radio" name="option" value="1" /><span class="option" id="Option1"></span></td>
+				<td><input type="radio" name="option" value="2" /><span class="option" id="Option2"></span></td>
+				<td><input type="radio" name="option" value="3" /><span class="option" id="Option3"></span></td>
+				<td><input type="radio" name="option" value="4" /><span class="option" id="Option4"></span></td>
+			</tr>
+		</table>
+		<div id="hintBoxes">
+			<p id="Hint1" style="display:none;"></p>
+			<p id="Hint2" style="display:none;"></p>
+			<p id="Hint3" style="display:none;"></p>
+			<p id="Hint4" style="display:none;"></p>
 		</div>
-		<div id="result" class="container result" style="display:none;">
-		</div>
-		<script src="question.js"></script>
-		<script src="quiz-script.js"></script>
 
-	</body>
+		<p id="feedback" style="display:none"></p>
+
+		<button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button>
+
+		<button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button>
+
+		<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
+	</div>
+	<div id="result" class="container result" style="display:none;">
+	</div>
+</div>
+<script src="question.js"></script>
+<script src="quiz-script.js"></script>
+
+</body>
 
 
 </html>

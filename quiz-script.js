@@ -15,6 +15,10 @@ var hint1											=document.getElementById('Hint1');
 var hint2											=document.getElementById('Hint2');
 var hint3											=document.getElementById('Hint3');
 var hint4											=document.getElementById('Hint4');
+var img1											=document.getElementById('img1');
+var img2											=document.getElementById('img2');
+var img3											=document.getElementById('img3');
+var img4											=document.getElementById('img4');
 
 var nextButton								=document.getElementById('nextButton');
 var submitButton							=document.getElementById('submitButton');
@@ -39,54 +43,60 @@ function loadQuestion(questionIndex,optionOrder){
 	hint4.style.display='none';
 
 
-	questionEl.textContent=(questionIndex+1) + '. '+q.question;
+	questionEl.textContent=q.question;
 	option1.textContent=q.options[optionOrder[0]];
 	option2.textContent=q.options[optionOrder[1]];
 	option3.textContent=q.options[optionOrder[2]];
 	option4.textContent=q.options[optionOrder[3]];
 
+	img1.src='img/'+q.answer_images[optionOrder[0]];
+	img2.src='img/'+q.answer_images[optionOrder[1]];
+	img3.src='img/'+q.answer_images[optionOrder[2]];
+	img4.src='img/'+q.answer_images[optionOrder[3]];
+
 };
 
 function provideHint(){
 	var q=questions[currentQuestion];
-if(currentHintNumber==numHintsCurrentQuestion-1){
-	hintButton.style.display='none';
-}
- if(currentHintNumber==0){
-	 hint1.style.display='';
-	 hint1.innerHTML=q.hints[currentHintNumber];
- }
- if(currentHintNumber==1){
-	 hint2.style.display='';
-	 hint2.innerHTML=q.hints[currentHintNumber];
- }
- if(currentHintNumber==2){
-	 hint3.style.display='';
-	 hint3.innerHTML=q.hints[currentHintNumber];
- }
- if(currentHintNumber==3){
-	 hint4.style.display='';
-	 hint4.innerHTML=q.hints[currentHintNumber];
- }
- currentHintNumber++;
+	if(currentHintNumber==numHintsCurrentQuestion-1){
+		hintButton.style.display='none';
+	}
+	if(currentHintNumber==0){
+		hint1.style.display='';
+		hint1.innerHTML=q.hints[currentHintNumber];
+	}
+	if(currentHintNumber==1){
+		hint2.style.display='';
+		hint2.innerHTML=q.hints[currentHintNumber];
+	}
+	if(currentHintNumber==2){
+		hint3.style.display='';
+		hint3.innerHTML=q.hints[currentHintNumber];
+	}
+	if(currentHintNumber==3){
+		hint4.style.display='';
+		hint4.innerHTML=q.hints[currentHintNumber];
+	}
+	currentHintNumber++;
 }
 function provideFeedback(){
-
 	var selectedOption=document.querySelector('input[type=radio]:checked');
-	hintButton.style.display='none';
 	if(!selectedOption){
 		alert('Please select your answer!');
 		return;
 	}
+	hintButton.style.display='none';
 	var answerIndex=selectedOption.value;
 	if(questions[currentQuestion].answer==questions[currentQuestion].options[optionOrder[answerIndex-1]]){
 		score+=5;
 		feedback.style.display='';
+		feedback.style.background="lightgreen";
 		feedback.innerHTML="Correct answer";
 
 	}
 	else{
 		feedback.style.display='';
+		feedback.style.background="crimson";
 		feedback.innerHTML="Incorrect answer";
 	}
 	nextButton.style.display='';
