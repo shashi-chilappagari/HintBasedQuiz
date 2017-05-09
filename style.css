@@ -2,7 +2,9 @@ body{
 	background-color: #eeeeee;
 	font-family:'Lato', sans-serif;
 }
-
+#title h2{
+	color:#fff;
+}
 .container{
 	width: 600px;
 	height: 500px;
@@ -13,19 +15,18 @@ body{
 	border: 2px solid #cbcbcb;
 	box-shadow:1-px 15px 5px #cbcbcb;
 }
+.container #question{
+	font-family: sans-serif;
+	font-size: 20px;
+	margin: 2px 2px 20px 2px;
+	color:#000;
+	background-color:lightblue;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 0px solid white;
+}
 #result{
 	color:#ddd;
-}
-#option1Box{
-	width: 120px;
-	height: 120px;
-	margin: 0 0 0 0;
-	background-color:#fff;
-	padding: 10px 10px 10px 10px;
-	border-radius: 0px;
-}
-#title h2{
-	color:#fff;
 }
 #feedbackBox{
 		margin: 0 0 0 0;
@@ -40,16 +41,6 @@ body{
 			border-radius: 10px;
 			border: 2px;
 }
-#optionBtn1,#optionBtn2,#optionBtn3,#optionBtn4{
-	margin: 2px 2px 2px 2px;
-	background-color:black;
-	padding: 5px 5px 5px 5px;
-	border-radius: 10px;
-	border: 2px solid black;
-}
-#optionBtn1:focus,#optionBtn2:focus,#optionBtn3:focus,#optionBtn4:focus{
-	outline:0;
-}
 #Hint1, #Hint2, #Hint3, #Hint4 {
 			margin: 2px 2px 2px 2px;
 			background-color:skyblue;
@@ -57,12 +48,12 @@ body{
 			border-radius: 10px;
 			border: 2px;
 			}
-.option{
-	width: 100px;
-	height: 40px;
+
+#textrow
+{
 	color:aquamarine;
 }
-#img1, #img2, #img3, #img4{
+.image{
 	width:120px;
 	height:120px;
 }
@@ -70,16 +61,7 @@ input{
 	margin-bottom: 0px;
 	margin-left:0px;
 }
-.container #question{
-	font-family: sans-serif;
-	font-size: 20px;
-	margin: 2px 2px 20px 2px;
-	color:#000;
-	background-color:lightblue;
-	padding: 10px 10px 10px 10px;
-	border-radius: 10px;
-	border: 0px solid white;
-}
+
 .hint-btn, .submit-btn,.next-btn{
 	margin: 2px 2px 2px 2px;
 	background-color:blanchedalmond;
@@ -133,9 +115,41 @@ input{
 	outline: 0;
 }
 
-table, tr, td{
+table#optionTable td{
+	text-align: center;
+	vertical-align: middle;
+	margin: 0 0 20px 0;
+	width:25%;
+	color:aquamarine;
+}
+table#optionTable {
+	margin: 0 0 10px 0;
+}
+table#hintTable td{
+	margin: 0 0 10px 0;
+	color:red;
+}
+table#hintBox tr{
+	text-align:left;
+	margin-bottom:20px;
+	}
+table#hintBox td{
+	text-align:left;
+	margin-bottom:20px;
+	color:red;
+	}
+
+#optionImages{
 	text-align: center;
 	vertical-align: middle;
 	margin: 0 0 10px 0;
+
+}
+#hintBox {
+	margin: 2px 2px 10px 2px;
+	background-color:skyblue;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 2px;
 
 }

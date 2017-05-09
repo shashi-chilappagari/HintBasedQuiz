@@ -6,47 +6,33 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-	<div id="quizContainer" class="container">
+	<div id="quizContainer" class="container"><!-- The outer box that contains the quiz-->
 		<div id="title" align="center"><h2>The Audio Orbis Quiz</h1></div>
-
-		<div id="question" class="question"></div>
-
-		<table style="width:100%">
-			<tr>
-				<td><img id="img1" ></td>
-				<td><img id="img2" ></td>
-				<td><img id="img3" ></td>
-				<td><img id="img4" ></td>
-			</tr>
-			<tr>
-				<td><input type="radio" name="option" value="1" /><span class="option" id="Option1"></span></td>
-				<td><input type="radio" name="option" value="2" /><span class="option" id="Option2"></span></td>
-				<td><input type="radio" name="option" value="3" /><span class="option" id="Option3"></span></td>
-				<td><input type="radio" name="option" value="4" /><span class="option" id="Option4"></span></td>
-			</tr>
-		</table>
-		<div id="hintBoxes">
-			<p id="Hint1" style="display:none;"></p>
-			<p id="Hint2" style="display:none;"></p>
-			<p id="Hint3" style="display:none;"></p>
-			<p id="Hint4" style="display:none;"></p>
+			<div id="questionContainer"><!--The box where question, hints and choices appear-->
+				<div id="question" class="question">
+				</div>
+				<div id="answerOptions"><!--Options are displayed here as a table with
+					two rows. One row has images and the other row has text-->
+					<table style="width:100%" id="optionTable">
+					</table>
+				</div>
+				<div id="hintBox">
+					<table style="width:100%" id="hintTable">
+					</table>
+				</div>
+				<button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button>
+				<button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button>
+			</div>
+			<div id="feedbackContainer">
+				<p id="feedback" style="display:none"></p>
+				<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
+			</div>
 		</div>
-
-		<p id="feedback" style="display:none"></p>
-
-		<button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button>
-
-		<button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button>
-
-		<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
+		<div id="result" class="container result" style="display:none;">
+		</div>
 	</div>
-	<div id="result" class="container result" style="display:none;">
-	</div>
-</div>
-<script src="question.js"></script>
-<script src="quiz-script.js"></script>
+	<script src="question.js"></script>
+	<script src="quiz-script.js"></script>
 
 </body>
-
-
 </html>
