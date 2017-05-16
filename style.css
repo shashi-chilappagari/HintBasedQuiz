@@ -3,10 +3,10 @@ body{
 	font-family:'Lato', sans-serif;
 }
 #title h2{
-	color:#fff;
+	color:plum;
 }
 .container{
-	width: 600px;
+	max-width: 600px;
 	height: 500px;
 	margin: 0 auto;
 	background-color: #20272b;
@@ -18,48 +18,56 @@ body{
 .container #question{
 	font-family: sans-serif;
 	font-size: 20px;
-	margin: 2px 2px 20px 2px;
+	margin: 2px 2px 2px 2px;
 	color:#000;
 	background-color:lightblue;
 	padding: 10px 10px 10px 10px;
 	border-radius: 10px;
 	border: 0px solid white;
 }
-#result{
+.container #answerOptions{
+	margin: 2px 2px 2px 2px;
+	color:#000;
+	background-color:black;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 0px solid white;
+}
+.container #questionImage{
+	background-color:steelblue;
+	padding: 10px 10px 10px 10px;
+	border-radius: 10px;
+	border: 0px solid white;
+	width:auto;
+	height:124px;
+	vertical-align: middle;
+}
+.container #questionImage td{
+		vertical-align: middle;
+		align:center;
+}
+.container #resultContainer{
 	color:#ddd;
 }
-#feedbackBox{
-		margin: 0 0 0 0;
-		background-color:green;
-		padding: 10px 10px 10px 10px;
-		border-radius: 0px;
-	}
-#feedback{
+.container #feedbackContainer{
 			margin: 2px 2px 2px 2px;
-			background-color:lightgreen;
+			background-color:white;
 			padding: 10px 10px 10px 10px;
 			border-radius: 10px;
 			border: 2px;
-}
-#Hint1, #Hint2, #Hint3, #Hint4 {
-			margin: 2px 2px 2px 2px;
-			background-color:skyblue;
-			padding: 10px 10px 10px 10px;
-			border-radius: 10px;
-			border: 2px;
-			}
-
-#textrow
-{
-	color:aquamarine;
 }
 .image{
 	width:120px;
 	height:120px;
 }
+.questionImage {
+	display:block;
+	width:120px;
+	height:120px;
+	margin: 0 auto;
+}
 input{
-	margin-bottom: 0px;
-	margin-left:0px;
+	vertical-align: middle;
 }
 
 .hint-btn, .submit-btn,.next-btn{
@@ -90,55 +98,22 @@ input{
 .hint-btn:focus, .submit-btn:focus,.next-btn:focus{
 	outline: 0;
 }
-
-#btn0, #btn1, #btn2, #btn3{
-	background-color: #778897;
-	width: 250px;
-	font-size: 20px;
-	color: #fff;
-	border: 1px solid #1d3c6a;
-	border-radius: 50px;
-	margin: 10px 40px 10px 0px;
-	padding: 10px 10px;
-}
-
-#progress{
-	color: #2b2b2b;
-	font-size: 18px;
-}
-
-#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover{
-	background-color: #57636e;
-	cursor:pointer;
-}
-#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus{
-	outline: 0;
-}
-
-table#optionTable td{
+.container #answerOptions table#optionTable td{
 	text-align: center;
 	vertical-align: middle;
 	margin: 0 0 20px 0;
 	width:25%;
 	color:aquamarine;
+	padding-top:5px;
 }
 table#optionTable {
 	margin: 0 0 10px 0;
 }
-table#hintTable td{
+table#hintTable{
 	margin: 0 0 10px 0;
-	color:red;
+	color:black;
+	padding-bottom: 0px;
 }
-table#hintBox tr{
-	text-align:left;
-	margin-bottom:20px;
-	}
-table#hintBox td{
-	text-align:left;
-	margin-bottom:20px;
-	color:red;
-	}
-
 #optionImages{
 	text-align: center;
 	vertical-align: middle;
