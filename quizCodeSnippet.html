@@ -1,0 +1,30 @@
+<div id="quizContainer" class="container"><!-- The outer box that contains the quiz-->
+  <div id="title" align="center"><h2>The Audio Orbis Quiz</h1>
+  </div>
+  <div id="questionContainer"><!--The box where question, hints and choices appear-->
+    <div id="question" class="question">
+    </div>
+    <div id="questionImage" class="questionImage">
+      <table style="width:100%" id="questionImageTable"></table>
+    </div>
+    <div id="answerOptions"><!--Options are displayed here as a table with
+      two rows. One row has images and the other row has text-->
+      <table style="width:100%" id="optionTable"></table>
+    </div>
+    <div id="hintBox">
+      <table style="width:100%" id="hintTable">
+      </table>
+    </div>
+    <button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button>
+    <button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button>
+  </div>
+  <div id="feedbackContainer">
+    <p id="feedback" style="display:none"></p>
+  </div>
+  <button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
+  <div id="result" style="display:none;">
+  </div>
+  </div>
+
+<script src="question.js"></script>
+<script src="quiz-script.js"></script>

@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 	<title>Shashi's Interactive Quiz</title>
-	<link href="style.css" rel="stylesheet">
+	<link href="style2.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<div id="quizContainer" class="container"><!-- The outer box that contains the quiz-->
+	<div class="row">
+	<div class="col-3"><p>This is left column</p></div>
+	<div id="quizContainer" class="col-6 container"><!-- The outer box that contains the quiz-->
 		<div id="title" align="center"><h2>The Audio Orbis Quiz</h1>
 		</div>
 		<div id="questionContainer"><!--The box where question, hints and choices appear-->
@@ -17,7 +20,7 @@
 			</div>
 			<div id="answerOptions"><!--Options are displayed here as a table with
 				two rows. One row has images and the other row has text-->
-				<table width="100%" id="optionTable"></table>
+				<!--<table width="100%" id="optionTable"></table>-->
 			</div>
 			<div id="hintBox">
 			</div>
@@ -31,7 +34,8 @@
 		<div id="resultContainer" style="display:none;">
 		</div>
 		</div>
-
+		<div class="col-3"><p>This is right column</p></div>
+	</div>
 	<script src="question.js"></script>
 	<script src="quiz-script.js"></script>
 

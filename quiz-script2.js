@@ -1,7 +1,7 @@
 var currentQuestion						=0;
 var score											=0;
 var totalQuestions						=questions.length;
-var optionOrder								=[2,0,1,3];
+var optionOrder								=[0,1,2,3];
 var numHintsCurrentQuestion		=0;
 var currentHintNumber					=0;
 var container									=document.getElementById('quizContainer');
@@ -15,7 +15,7 @@ var resultContainer						=document.getElementById('resultContainer');
 var feedback									=document.getElementById('feedback');
 
 function showAudioClips(){
-	var para=document.createElement("p");
+	/*var para=document.createElement("p");
 	var text='Here is a clip on Rainbows and how they are formed.'
 	var node=document.createTextNode(text);
 	para.appendChild(node);
@@ -29,10 +29,12 @@ function showAudioClips(){
 	resultContainer.appendChild(para);
 	resultContainer.innerHTML+= '<br> <audio controls><source src="audio/Whale.mp3" type="audio/mpeg">'+
 	'Your browser does not support the audio element.</audio>';
+*/
 }
 function loadQuestion(questionIndex,optionOrder){
 	/*Restting the hint number to 0*/
 	currentHintNumber=0;
+	numHintsCurrentQuestion=0;
 	/*Making question container visible and hiding feedback container*/
 	questionContainer.style.display='';
 	feedbackContainer.style.display='none';
@@ -41,69 +43,57 @@ function loadQuestion(questionIndex,optionOrder){
 	var questionEl=document.getElementById('question');
 	questionEl.textContent=q.question;
 	/*Loading the question image if present*/
-	var questionImage=document.getElementById("questionImage");
-	var questionImageTable=document.getElementById("questionImageTable");
-	questionImageTable.innerHTML='';
-	var questionImageRow;
-	/*Creating a new image table for current question, if present*/
-	if(q.questionImage){
-		if(q.questionImage.length>0){
-			questionImage.style.display='';
-		}
-		else{
-			questionImage.style.display='none';
-		}
-		questionImageRow=questionImageTable.insertRow(-1);
-		for (var i=0;i<q.questionImage.length;i++){
-			var questionImageCol=questionImageRow.insertCell(i);
-			questionImageCol.innerHTML='<img  class="questionImage" src=img/'+q.questionImage[i]+'>';
-		}
-	}
-	else{
-		questionImage.style.display='none';
-	}
-	/*Displaying answer options with images, if present
-	First, the old table is deleted. Then new rows are added based on the question*/
 
-	var optionTable=document.getElementById('optionTable');
-	var imageRow;
-	var textRow;
-	var imgsrc, imgid, imgcol, textCol;
-	//optionTable.innerHTML='';
-	if(q.answerImages){
-		for (var i=0;i<q.answerImages.length;i++){
-			var answerOptions=document.getElementById('answerOptions');
-			var imageOption=document.createElement('div');
-			imageOption.className='left';
-			answerOptions.appendChild(imageOption);
-			imgsrc="img/"+q.answerImages[optionOrder[i]];
-			imgid="img"+(i+1);
-			imageOption.id=imgid;
-			imageOption.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
-			imageOption.innerHTML+='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-		}
-	}
-	/*imageRow=optionTable.insertRow(-1);
-	for (var i=0;i<q.answerImages.length;i++){
-		imgsrc="img/"+q.answerImages[optionOrder[i]];
-		imgid="img"+(i+1);
-		imgcol=imageRow.insertCell(i);
-		imgcol.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
-	}*/
-	/*if(q.options.length>0){
-		textRow=optionTable.insertRow(-1);
-		for (var i=0;i<q.options.length;i++){
-			textCol=textRow.insertCell(i);
-			if(q.questionType){
-				if(q.questionType=='True/False'){
-					textCol.innerHTML='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-				}
-				else {
-					textCol.innerHTML='<input type="checkbox" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-				}
+	/*Displaying answer options with images, if present*/
+	var imgsrc, imgid;
+	/*var answerOptions=document.getElementById('answerOptions');
+	answerOptions.innerHTML='';
+	for (var i=0;i<q.options.length;i++){
+		var answerOption=document.createElement('div');
+		answerOption.className='col-3 col-s-6 col-m-6 left';
+		answerOptions.appendChild(answerOption);
+		if(q.answerImages)
+		{
+			if(q.answerImages[optionOrder[i]])
+			{
+				imgsrc="img/"+q.answerImages[optionOrder[i]];
+				imgid="img"+(i+1);
 			}
+				answerOption.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
 		}
+		answerOption.innerHTML+='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
 	}*/
+	var answerOption;
+	var optionNumber;
+	var imgNumber;
+	var textNumber;
+	var textid;
+
+	for (var i=0;i<q.options.length;i++){
+		optionNumber='choice'+(i+1);
+		imgid="img"+(i+1);
+		textid="text"+(i+1);
+		answerOption=document.getElementById(optionNumber);
+		imgNumber=document.getElementById(imgid);
+		textNumber=document.getElementById(textid);
+		imgNumber.src='';
+		textNumber.innerHTML='';
+		//answerOption.innerHTML='';
+		if(q.answerImages)
+		{
+			if(q.answerImages[optionOrder[i]])
+			{
+				imgsrc="img/"+q.answerImages[optionOrder[i]];
+
+			}
+				//answerOption.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
+				imgNumber.src=imgsrc;
+		}
+		//answerOption.innerHTML+='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
+		textNumber.innerHTML='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
+
+	}
+
 	/* Displaying the hint button if hints are present for the current question.
 	Deleting the previous hints*/
 	if(q.hints){

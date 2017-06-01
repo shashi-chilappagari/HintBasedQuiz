@@ -7,7 +7,7 @@ body{
 }
 .container{
 	max-width: 600px;
-	height: 500px;
+	height: auto;
 	margin: 0 auto;
 	background-color: #20272b;
 	padding: 10px 50px 50px 50px;
@@ -28,7 +28,8 @@ body{
 .container #answerOptions{
 	margin: 2px 2px 2px 2px;
 	color:#000;
-	background-color:black;
+	text-align:center;
+	background-color:lightyellow;
 	padding: 10px 10px 10px 10px;
 	border-radius: 10px;
 	border: 0px solid white;
@@ -98,14 +99,35 @@ input{
 .hint-btn:focus, .submit-btn:focus,.next-btn:focus{
 	outline: 0;
 }
-.container #answerOptions table#optionTable td{
+/*.container #answerOptions table#optionTable td{
 	text-align: center;
 	vertical-align: middle;
 	margin: 0 0 20px 0;
 	width:25%;
-	color:aquamarine;
+	color:black;
 	padding-top:5px;
-}
+}*/
+.container #answerOptions #img1{
+	max-width:130px;
+	margin:4px 4px 4px 4px;
+	display:inline-block;
+	}
+.container #answerOptions #img2{
+		max-width:130px;
+		margin:4px 4px 4px 4px;
+		display:inline-block;
+	}
+.container #answerOptions #img3{
+			max-width:130px;
+			margin:4px 4px 4px 4px;
+			display:inline-block;
+	}
+.container #answerOptions #img4{
+	max-width:130px;
+				margin:4px 4px 4px 4px;
+				display:inline-block;
+		}
+
 table#optionTable {
 	margin: 0 0 10px 0;
 }
