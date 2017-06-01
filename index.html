@@ -2,42 +2,63 @@
 <html lang="en">
 <head>
 	<title>Shashi's Interactive Quiz</title>
-	<link href="style2.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 	<div class="row">
-	<div class="col-3"><p>This is left column</p></div>
-	<div id="quizContainer" class="col-6 container"><!-- The outer box that contains the quiz-->
-		<div id="title" align="center"><h2>The Audio Orbis Quiz</h1>
-		</div>
-		<div id="questionContainer"><!--The box where question, hints and choices appear-->
-			<div id="question" class="question">
+		<div id="introContainer" class="col-6 col-m-12 col-s-12 introContainer">
+			<div id="title" align="center"><h2>Welcome to Audio Orbis</h1></div>
+			<div id="introBox" class="col-12 col-m-12 col-s-12"></div>
+			<div class="col-6 col-m-12 col-s-12" id="startButtonContainer">
+						<button id="startButton" class="start-btn" onclick="startQuiz();">Start Quiz</button>
 			</div>
-			<div id="questionImage" class="questionImage">
-				<table style="width:100%" id="questionImageTable"></table>
-			</div>
-			<div id="answerOptions"><!--Options are displayed here as a table with
-				two rows. One row has images and the other row has text-->
-				<!--<table width="100%" id="optionTable"></table>-->
-			</div>
-			<div id="hintBox">
-			</div>
-			<button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button>
-			<button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button>
 		</div>
-		<div id="feedbackContainer">
-			<p id="feedback" style="display:none"></p>
-		</div>
-		<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
-		<div id="resultContainer" style="display:none;">
-		</div>
-		</div>
-		<div class="col-3"><p>This is right column</p></div>
 	</div>
-	<script src="question.js"></script>
-	<script src="quiz-script.js"></script>
+		<div class="row">
+			<div id="quizContainer" class="col-6 col-m-12 col-s-12 quizContainer"><!-- The outer box that contains the quiz-->
+				<div id="title" align="center"><h2>The Never Ending Quiz</h1></div>
+					<div class="row">
+						<div id="questionContainer" class="col-12 col-m-12 col-s-12"><!--The box where question, hints and choices appear-->
+							<div class="row" id="questionBox">
+								<div id="question" class="col-12 col-m-12 col-s-12 question"></div>
+								<div id="quest" class="col-4 col-m-6 col-s-6 questionImage2"></div>
+							</div>
+							<div class="row">
+								<div id="answerOptions" class="col-12 col-m-12 col-s-12"></div>
+							</div>
+							<div class="row"><div id="hintBox" class="col-12 col-m-12 col-s-12"></div></div>
+							<div class="row" id="buttonBox">
+								<div class="col-4 col-m-6 col-s-6 dummy"><button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button></div>
+								<div class="col-4 col-m-6 col-s-6 dummy"><button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button></div>
+							</div>
+						</div>
+					</div>
 
-</body>
-</html>
+					<div class="row" >
+						<!--<div id="feedbackContainer" class="col-12 col-m-12 col-s-12">-->
+						<div id="feedbackContainer" class="col-12 col-m-12 col-s-12"></div>
+					</div>
+					<div class="row" id="nextButtonContainer">
+						<div class="col-6 col-m-12 col-s-12 dummy">
+							<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
+						</div>
+					</div>
+					<div class="row">
+						<div id="resultContainer" class="col-12 col-m-12 col-s-12" style="display:none;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="imageCreditsContainer" class="col-6 col-m-12 col-s-12">
+					<div id="title" align="center"><h2>Image Credits</h1></div>
+					<div id="creditsContainer"></div>
+				</div>
+			</div>
+				<script src="question.js"></script>
+				<script src="quiz-script.js"></script>
+
+			</body>
+			</html>

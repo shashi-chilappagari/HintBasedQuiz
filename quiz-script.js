@@ -1,12 +1,17 @@
 var currentQuestion						=0;
 var score											=0;
 var totalQuestions						=questions.length;
-var optionOrder								=[2,0,1,3];
+var optionOrder								=[0,1,2,3];
+var optionOrderInverse				=[0,1,2,3];
 var numHintsCurrentQuestion		=0;
 var currentHintNumber					=0;
 var container									=document.getElementById('quizContainer');
+var introContainer						=document.getElementById('introContainer');
+
 var questionContainer					=document.getElementById('questionContainer');
 var feedbackContainer					=document.getElementById('feedbackContainer');
+var nextButtonContainer				=document.getElementById('nextButtonContainer');
+var startButtonContainer			=document.getElementById('startButtonContainer');
 var container									=document.getElementById('quizContainer');
 var nextButton								=document.getElementById('nextButton');
 var submitButton							=document.getElementById('submitButton');
@@ -15,117 +20,123 @@ var resultContainer						=document.getElementById('resultContainer');
 var feedback									=document.getElementById('feedback');
 
 function showAudioClips(){
-	var para=document.createElement("p");
-	var text='Here is a clip on Rainbows and how they are formed.'
-	var node=document.createTextNode(text);
-	para.appendChild(node);
-	resultContainer.appendChild(para);
-	resultContainer.innerHTML+= '<br> <audio controls><source src="audio/Rainbows.mp3" type="audio/mpeg">'+
-	'Your browser does not support the audio element.</audio>';
-	var para=document.createElement("p");
-	var text='Here is a clip on Whales and how they evolved.'
-	var node=document.createTextNode(text);
-	para.appendChild(node);
-	resultContainer.appendChild(para);
-	resultContainer.innerHTML+= '<br> <audio controls><source src="audio/Whale.mp3" type="audio/mpeg">'+
-	'Your browser does not support the audio element.</audio>';
-}
+	}
 function loadQuestion(questionIndex,optionOrder){
 	/*Restting the hint number to 0*/
 	currentHintNumber=0;
+	numHintsCurrentQuestion=0;
 	/*Making question container visible and hiding feedback container*/
+	container.style.display='';
 	questionContainer.style.display='';
 	feedbackContainer.style.display='none';
 	/*Loading the question*/
+	var question=document.getElementById('questionBox');
 	var q=questions[questionIndex];
 	var questionEl=document.getElementById('question');
 	questionEl.textContent=q.question;
-	/*Loading the question image if present*/
-	var questionImage=document.getElementById("questionImage");
-	var questionImageTable=document.getElementById("questionImageTable");
-	questionImageTable.innerHTML='';
-	var questionImageRow;
-	/*Creating a new image table for current question, if present*/
+	var questionImage=document.getElementById('quest');
+	questionImage.innerHTML='';
 	if(q.questionImage){
-		if(q.questionImage.length>0){
-			questionImage.style.display='';
-		}
-		else{
-			questionImage.style.display='none';
-		}
-		questionImageRow=questionImageTable.insertRow(-1);
-		for (var i=0;i<q.questionImage.length;i++){
-			var questionImageCol=questionImageRow.insertCell(i);
-			questionImageCol.innerHTML='<img  class="questionImage" src=img/'+q.questionImage[i]+'>';
-		}
+		questionImage.style.display='';
+		imgsrc="img/"+q.questionImage[0];
+		questionImage.innerHTML+='<img  class="image" src='+imgsrc+'>';
 	}
 	else{
 		questionImage.style.display='none';
 	}
-	/*Displaying answer options with images, if present
-	First, the old table is deleted. Then new rows are added based on the question*/
 
-	var optionTable=document.getElementById('optionTable');
-	var imageRow;
-	var textRow;
-	var imgsrc, imgid, imgcol, textCol;
-	//optionTable.innerHTML='';
-	if(q.answerImages){
-		for (var i=0;i<q.answerImages.length;i++){
-			var answerOptions=document.getElementById('answerOptions');
-			var imageOption=document.createElement('div');
-			imageOption.className='left';
-			answerOptions.appendChild(imageOption);
-			imgsrc="img/"+q.answerImages[optionOrder[i]];
-			imgid="img"+(i+1);
-			imageOption.id=imgid;
-			imageOption.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
-			imageOption.innerHTML+='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-		}
-	}
-	/*imageRow=optionTable.insertRow(-1);
-	for (var i=0;i<q.answerImages.length;i++){
-		imgsrc="img/"+q.answerImages[optionOrder[i]];
-		imgid="img"+(i+1);
-		imgcol=imageRow.insertCell(i);
-		imgcol.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
-	}*/
-	/*if(q.options.length>0){
-		textRow=optionTable.insertRow(-1);
-		for (var i=0;i<q.options.length;i++){
-			textCol=textRow.insertCell(i);
-			if(q.questionType){
-				if(q.questionType=='True/False'){
-					textCol.innerHTML='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-				}
-				else {
-					textCol.innerHTML='<input type="checkbox" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' />'+q.options[optionOrder[i]];
-				}
+	/*Loading the question image if present*/
+
+	/*Displaying answer options with images, if present*/
+	var imgsrc, imgid;
+	var answerOptions=document.getElementById('answerOptions');
+	var answerOption;
+	answerOptions.innerHTML='';
+	for (var i=0;i<q.options.length;i++){
+		if(q.options.length==2){
+			if(i==0){
+				answerOption=document.createElement('div');
+				answerOption.className='col-3';
+				answerOptions.appendChild(answerOption);
 			}
 		}
-	}*/
+		answerOption=document.createElement('div');
+		if(q.answerImages){
+			answerOption.className='col-3 col-s-6 col-m-6 left';
+		}
+		else{
+			answerOption.className='col-12 col-s-12 col-m-12 left';
+		}
+
+		answerOptions.appendChild(answerOption);
+		if(q.answerImages){
+			if(q.answerImages[optionOrder[i]]){
+				imgsrc="img/"+q.answerImages[optionOrder[i]];
+				imgid="img"+(i+1);
+			}
+				answerOption.innerHTML='<img  id='+imgid+' class="image" src='+imgsrc+'>';
+		}
+		else{
+			answerOption.style.textAlign="left";
+		}
+		answerOption.innerHTML+='<input type="radio" id="option'+(i+1)+'" name="option"'+' value='+ (i+1)+ ' /><label for="option'+(i+1)+'">'+q.options[optionOrder[i]]+'</label>';
+		if(q.options.length==2){
+			if(i==1)
+			{
+				answerOption=document.createElement('div');
+				answerOption.className='col-3';
+				answerOptions.appendChild(answerOption);
+			}
+		}
+	}
 	/* Displaying the hint button if hints are present for the current question.
 	Deleting the previous hints*/
+	hintButton.style.display='';
 	if(q.hints){
 		numHintsCurrentQuestion=q.hints.length;
 	}
 	if(numHintsCurrentQuestion>0){
-		hintButton.style.display='';
+		hintButton.textContent='Give Me a Hint';
 	}
 	else{
-		hintButton.style.display='none';
+		hintButton.textContent='No Hints';
 	}
 	var hintBox=document.getElementById('hintBox');
 	hintBox.style.display='none';
 	hintBox.innerHTML='';
+	/*Displaying image credits*/
+	var imageCreditContainer=document.getElementById('imageCreditsContainer');
+	var imageCreditBox=document.getElementById('creditsContainer');
+	var credit;
+	if(q.imageCredits){
+		imageCreditsContainer.style.display='';
+		imageCreditBox.innerHTML='';
+		for(var i=0;i<q.imageCredits.length;i++){
+			credit=document.createElement('div');
+			credit.className='col-12 col-s-12 col-m-12 left';
+			imageCreditBox.appendChild(credit);
+			credit.innerHTML+=q.imageCredits[i];
+		}
+	}
+	else {
+		imageCreditsContainer.style.display='none';
+	}
 };
 function provideHint(){
 	var q=questions[currentQuestion];
 	var hintBox=document.getElementById('hintBox');
+	if(numHintsCurrentQuestion==0){
+		alert('Sorry! There are no hints available.')
+		return;
+	}
+	if(currentHintNumber>numHintsCurrentQuestion-1){
+		alert('No more hints available.')
+		return;
+	}
 	hintBox.style.display='';
 	insertText(q.hints[currentHintNumber],'hintBox');
 	if(currentHintNumber==numHintsCurrentQuestion-1){
-		hintButton.style.display='none';
+		hintButton.textContent='No More Hints';
 	}
 	currentHintNumber++;
 }
@@ -136,72 +147,83 @@ function insertText(text,parentNode){
 	para.appendChild(node);
 	parent.appendChild(para);
 }
-function provideFeedback(){
-	var checkedAnswers=[];
-	var j=0;
+function getCheckedAnswers(checkedAnswers,optionIdName,numOptions){
 	var id='';
-	for(var i=0;i<questions[currentQuestion].options.length;i++){
-		id='option'+(i+1);
+	var nothingChecked=true;
+	for(var i=0;i<numOptions;i++){
+		checkedAnswers[i]=0;
+		id=optionIdName+(i+1);
 		if(document.getElementById(id).checked){
-			checkedAnswers[j]=i;
-			j++;
+			checkedAnswers[i]=1;
+			nothingChecked=false;
 		}
 	}
-	if(j==0){
+	return nothingChecked;
+}
+function checkIfCorrect(checkedAnswers,actualAnswers){
+	for (var i=0;i<checkedAnswers.length;i++){
+		if(checkedAnswers[i]!=actualAnswers[i]){
+			return false;
+		}
+	}
+	return true;
+}
+function getActualAnswersVector(fullAnswerVector,answerVector,optionOrderInverse,numOptions){
+	for (var i=0;i<numOptions;i++){
+		fullAnswerVector[i]=0;
+	}
+	for (var i=0;i<answerVector.length;i++){
+		fullAnswerVector[optionOrderInverse[answerVector[i]]]=1;
+	}
+}
+function provideFeedback(){
+	var checkedAnswers=[];
+	optionIdName='option';
+	numOptions=questions[currentQuestion].options.length;
+	var nothingChecked;
+	nothingChecked=getCheckedAnswers(checkedAnswers,optionIdName,numOptions);
+	if(nothingChecked){
 		alert('Please select your answer!');
 		return;
 	}
 	questionContainer.style.display='none';
 	feedbackContainer.style.display='';
 	hintButton.style.display='none';
-	var answerIndex=-1;
-	var match=0;
-	for(var index=0;index<checkedAnswers.length;index++){
-		answerIndex=checkedAnswers[index];
-		for(var i=0;i<questions[currentQuestion].answer.length;i++){
-			if(questions[currentQuestion].answer[i]==questions[currentQuestion].options[optionOrder[answerIndex]]){
-				match++;
-			}
-		}
-	}
-	var correct=false;
-	feedbackContainer.style.display='';
-	if((match==checkedAnswers.length)&&(match==questions[currentQuestion].answer.length)){
-		correct=true;
-		score+=5;
-		feedbackContainer.style.background="darkseagreen";
-		insertText(questions[currentQuestion].response[0],'feedbackContainer');
-	}
-	else{
-		insertText(questions[currentQuestion].response[1],'feedbackContainer');
-		feedbackContainer.style.background="darksalmon";
-	}
-		if(questions[currentQuestion].feedback){
-			if(questions[currentQuestion].feedbackType=='Correct/Incorrect')
-			{
-				if(correct){
-					insertText(questions[currentQuestion].feedback[0],'feedbackContainer');
-					}
-				else {
-					insertText(questions[currentQuestion].feedback[1],'feedbackContainer');
-					}
-			}
-			if(questions[currentQuestion].feedbackType=='OptionBased'){
-				insertText(questions[currentQuestion].feedback[optionOrder[checkedAnswers[0]]],'feedbackContainer');
-				}
-			}
-
-	if(questions[currentQuestion].audioIntro){
-		insertText(questions[currentQuestion].audioIntro,'feedbackContainer');
-		feedbackContainer.innerHTML+= '<audio id="audio" controls><source src="audio/'+ questions[currentQuestion].audioClips
-		+'" type="audio/mpeg" id="audioClip">'+
-		'Your browser does not support the audio element.</audio>';
-	}
 	nextButton.style.display='';
 	submitButton.style.display='none';
+	var imageCreditsContainer=document.getElementById('imageCreditsContainer');
+	imageCreditsContainer.style.display='none';
+	fullAnswerVector=[];
+	getActualAnswersVector(fullAnswerVector,questions[currentQuestion].answer,optionOrderInverse,questions[currentQuestion].options.length);
+	var correct=checkIfCorrect(checkedAnswers,fullAnswerVector)
+	if(correct){
+		feedbackContainer.style.background='lightskyblue';
+		score+=5;
+	}
+	else {
+		feedbackContainer.style.background='burlywood';
+	}
+	//feedbackContainer.textContent=questions[currentQuestion].response[(correct+1)%2];
+	insertText(questions[currentQuestion].response[(correct+1)%2],'feedbackContainer');
+
+	var topic;
+	var i=0;
+	if(questions[currentQuestion].furthertopics){
+		insertText("Select other topics that are of interest to you.",'feedbackContainer');
+		for(i=0;i<questions[currentQuestion].furthertopics.length;i++){
+			topic=document.createElement('div');
+			topic.className='col-12 col-s-12 col-m-12 left';
+			feedbackContainer.appendChild(topic);
+			topic.innerHTML+='<input type="checkbox" id="furthertopic'+(i+1)+'" name="furthertopic"'+' value='+ (i+1)+ ' /><label for="furthertopic'+(i+1)+'">'+questions[currentQuestion].furthertopics[i]+'</label>';
+		}
+	}
+
 }
 
 function loadNextQuestion(){
+
+	container.style.display='';
+	quizContainer.style.display='';
 	feedbackContainer.style.display="none";
 	feedbackContainer.innerHTML='';
 	currentQuestion++;
@@ -212,6 +234,7 @@ function loadNextQuestion(){
 		questionContainer.style.display='none';
 		feedbackContainer.style.display='none';
 		nextButton.style.display='none';
+		nextButtonContainer.style.display='none';
 		resultContainer.style.display='';
 		var text='Your score: '+ score;
 	  insertText(text,'resultContainer');
@@ -222,5 +245,23 @@ function loadNextQuestion(){
 	nextButton.style.display='none';
 	submitButton.style.display='';
 };
+function showIntro()
+{
+	container.style.display='none';
+	feedbackContainer.style.display='none';
+	imageCreditsContainer.style.display='none';
+	var intro=document.getElementById('introBox');
+	var textContent='Take our quizzes and indicate the topics that you are interested in after each question.';
+	insertText(textContent,'introBox');
+	textContent='Let Audio Orbis teach you these topics while you drive, exercise or relax during your work in the form of short audo clips';
+	insertText(textContent,'introBox');
+	textContent='Over time, the quizzes will adapt to your interests. Using the power of machine learning, Audio Orbis will find topics that you will like without having you look for them.';
+	insertText(textContent,'introBox');
+}
+function startQuiz(){
+	introContainer.style.display='none';
+	startButtonContainer.style.display='none';
+	loadQuestion(currentQuestion,optionOrder);
+}
 
-loadQuestion(currentQuestion,optionOrder);
+showIntro();
