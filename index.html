@@ -6,59 +6,85 @@
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 </head>
 <body>
 	<div class="row">
 		<div id="introContainer" class="col-6 col-m-12 col-s-12 introContainer">
 			<div id="title" align="center"><h2>Welcome to Audio Orbis</h1></div>
 			<div id="introBox" class="col-12 col-m-12 col-s-12"></div>
-			<div class="col-6 col-m-12 col-s-12" id="startButtonContainer">
+			<div id="startButtonContainer" class="col-12 col-m-12 col-s-12" >
 						<button id="startButton" class="start-btn" onclick="startQuiz();">Start Quiz</button>
 			</div>
 		</div>
 	</div>
-		<div class="row">
-			<div id="quizContainer" class="col-6 col-m-12 col-s-12 quizContainer"><!-- The outer box that contains the quiz-->
-				<div id="title" align="center"><h2>The Never Ending Quiz</h1></div>
+		<div class="row" id="page">
+			<div id="quizContainer" class=" col-12 col-m-12 col-s-12 quizContainer"><!-- The outer box that contains the quiz-->
+				<div id="title" align="center"><h2>The Never Ending Quiz </h2></div>
 					<div class="row">
 						<div id="questionContainer" class="col-12 col-m-12 col-s-12"><!--The box where question, hints and choices appear-->
 							<div class="row" id="questionBox">
 								<div id="question" class="col-12 col-m-12 col-s-12 question"></div>
-								<div id="quest" class="col-4 col-m-6 col-s-6 questionImage2"></div>
-							</div>
-							<div class="row">
+								<div id="questionImage" class="col-4 col-m-6 col-s-6 questionImage2"></div>
+							</div><link rel="shortcut icon" href=".ico">
+							<div class="row" id="answerOptionBox">
 								<div id="answerOptions" class="col-12 col-m-12 col-s-12"></div>
 							</div>
-							<div class="row"><div id="hintBox" class="col-12 col-m-12 col-s-12"></div></div>
+							<!--<div class="row"><div id="hintBox" class="col-12 col-m-12 col-s-12"></div></div>-->
+							<div class="row" id="hintBox"></div>
 							<div class="row" id="buttonBox">
-								<div class="col-4 col-m-6 col-s-6 dummy"><button id="hintButton" class="hint-btn" onclick="provideHint();">Give me a hint</button></div>
-								<div class="col-4 col-m-6 col-s-6 dummy"><button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button></div>
+								<div class="col-4 col-m-4 col-s-3 button"><button id="skipButton" class="skip-btn" onclick="skipButton();">Skip</button></div>
+								<div class="col-4 col-m-4 col-s-5 button"><button id="hintButton" class="hint-btn" onclick="provideHint();">Give a hint</button></div>
+								<div class="col-4 col-m-4 col-s-4 button"><button id="submitButton" class="submit-btn" onclick="provideFeedback();">Submit</button></div>
 							</div>
 						</div>
 					</div>
-
-					<div class="row" >
-						<!--<div id="feedbackContainer" class="col-12 col-m-12 col-s-12">-->
-						<div id="feedbackContainer" class="col-12 col-m-12 col-s-12"></div>
+					<div class="row" id="feedbackContainer"></div>
+						<!--<div id="feedbackContainer" class="col-12 col-m-12 col-s-12"></div>
+					</div>-->
+					<div class="row" id="furthertopicsContainer" >
+						<!--<div id="furthertopicsContainer" class="col-12 col-m-12 col-s-12"></div>-->
 					</div>
 					<div class="row" id="nextButtonContainer">
-						<div class="col-6 col-m-12 col-s-12 dummy">
-							<button id="nextButton" class="next-btn" style="display:none;" onclick="loadNextQuestion();">Next Question</button>
-						</div>
+						<!--<div class="col-12 col-m-12 col-s-12 button" id="nextButtonContainer">-->
+							<button id="moreLikeThisButton" class="more-btn col-6 col-m-12 col-s-12" onclick="nextButtonFunction();">More Like This</button>
+							<button id="lessLikeThisButton" class="less-btn col-6 col-m-12 col-s-12" onclick="nextButtonFunction();">Fewer Like This</button>
+							<!--<button id="nextButton" class="next-btn col-6 col-m-12 col-s-12" style="display:none;" onclick="nextButtonFunction();">Next Question</button>-->
+						<!--</div>-->
 					</div>
 					<div class="row">
 						<div id="resultContainer" class="col-12 col-m-12 col-s-12" style="display:none;"></div>
 					</div>
+					<div class="row">
+						<div id="outerContainer" class="col-12 col-m-12 col-s-12">
+						<div id="imageCreditsContainer" >
+							<div id="creditsHeading" class="col-12 col-m-12 col-s-12" align="center"><h3>Image Credits</h3></div>
+							<div id="creditsContainer" class="col-12 col-m-12 col-s-12"></div>
+						</div>
+					</div>
+					</div>
+				</div>
+				<div id="playlistContainer" class="col-12 col-m-12 col-s-12">
+					<div id="playlistHeading" align="center"><h2>Your Pinned Topics</h2></div>
+					<div id="playlistContents" class="col-12 col-m-12 col-s-12">
+					<!--<div class="row" id="playlistBox">-->
+						<div id="playlist" class="col-12 col-m-12 col-s-12"></div>
+					<!--</div>-->
 				</div>
 			</div>
-			<div class="row">
-				<div id="imageCreditsContainer" class="col-6 col-m-12 col-s-12">
-					<div id="title" align="center"><h2>Image Credits</h1></div>
-					<div id="creditsContainer"></div>
+
+				<div id="contentContainer" class="col-3 col-m-12 col-s-12">
+					<div id="contentHeading" align="center"><h2>Your Current Playlist</h2></div>
+					<div id="contentsBox" class="col-12 col-m-12 col-s-12">
+					<div id="contents" class="col-12 col-m-12 col-s-12"></div>
 				</div>
 			</div>
+			</div>
+
 				<script src="question.js"></script>
 				<script src="quiz-script.js"></script>
+				<script src="topics.js"></script>
 
 			</body>
 			</html>
